@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
 
-file1 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/Drinking_Games/FTD_data/FTD_turns.txt'
-file2 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/Drinking_Games/FTD_data/FTD_shots.txt'
-file3 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/Drinking_Games/FTD_data' \
-        '/FTD_shots_per_player_4.txt'
+file1 = 'FTD_data/FTD_turns.txt'
+file2 = 'FTD_data/FTD_shots.txt'
+file3 = 'FTD_data/FTD_shots_per_player_4.txt'
 turns_file = open(file1, 'r')
 shots_file = open(file2, 'r')
 shots_pp4_file = open(file3, 'r')

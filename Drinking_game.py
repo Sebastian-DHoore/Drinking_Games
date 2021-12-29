@@ -652,10 +652,8 @@ with HiddenPrints():
         while not myGame.game_end:
             myGame.make_best_move()
         myGame.end()
-        file1 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/' \
-                'Drinking_Games/Drinking_game_data/Turns.txt'
-        file2 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/' \
-                'Drinking_Games/Drinking_game_data/Shots.txt'
+        file1 = 'Drinking_game_data/Turns.txt'
+        file2 = 'Drinking_game_data/Shots.txt'
         with open(file1, 'a') as filetowrite:
             filetowrite.write(
                 str(myGame.players[0].turns + myGame.players[1].turns

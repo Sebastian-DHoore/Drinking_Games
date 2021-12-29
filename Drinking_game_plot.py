@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
-file1 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/Drinking_Games/Drinking_game_data/Turns.txt'
-file2 = '/Users/sebastiandhoore/Documents/PycharmProjects/personal_project/Drinking_Games/Drinking_game_data/Shots.txt'
+file1 = 'Drinking_game_data/Turns.txt'
+file2 = 'Drinking_game_data/Shots.txt'
 turns_file = open(file1, 'r')
 shots_file = open(file2, 'r')
 turns = turns_file.read()
