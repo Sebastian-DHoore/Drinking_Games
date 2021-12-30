@@ -643,27 +643,31 @@ class DrinkingGame(object):
         self.turn(row, guess, side)
 
 
-# Hidden simulation
+# Ignore error hidden simulation
 
-with HiddenPrints():
-    while 1:
-        myGame = DrinkingGame()
-        myGame.start()
-        while not myGame.game_end:
-            myGame.make_best_move()
-        myGame.end()
-        file1 = 'Drinking_game_data/Turns.txt'
-        file2 = 'Drinking_game_data/Shots.txt'
-        with open(file1, 'a') as filetowrite:
-            filetowrite.write(
-                str(myGame.players[0].turns + myGame.players[1].turns
-                    + myGame.players[2].turns + myGame.players[3].turns))
-            filetowrite.write(", ")
-        with open(file2, 'a') as filetowrite:
-            filetowrite.write(
-                str(myGame.players[0].shots + myGame.players[1].shots
-                    + myGame.players[2].shots + myGame.players[3].shots))
-            filetowrite.write(", ")
+
+while 1:
+    try:
+        with HiddenPrints():
+            myGame = DrinkingGame()
+            myGame.start()
+            while not myGame.game_end:
+                myGame.make_best_move()
+            myGame.end()
+            file1 = 'Drinking_game_data/Turns.txt'
+            file2 = 'Drinking_game_data/Shots.txt'
+            with open(file1, 'a') as filetowrite:
+                filetowrite.write(
+                    str(myGame.players[0].turns + myGame.players[1].turns
+                        + myGame.players[2].turns + myGame.players[3].turns))
+                filetowrite.write(", ")
+            with open(file2, 'a') as filetowrite:
+                filetowrite.write(
+                    str(myGame.players[0].shots + myGame.players[1].shots
+                        + myGame.players[2].shots + myGame.players[3].shots))
+                filetowrite.write(", ")
+    except Exception as e:
+        print(e)
 
 # Simulation
 
