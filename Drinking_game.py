@@ -1,6 +1,7 @@
 import Card_game_classes
 import os
 import sys
+import copy
 
 
 class HiddenPrints:
@@ -565,6 +566,20 @@ class DrinkingGame(object):
         is_flipped = (self.board.row_1, self.board.row_2, self.board.row_3)
         in_out_place = ((1, None), (2, None), (3, None))
 
+        total_cards = copy.deepcopy(self.board.deck.cards)
+        for y in range(0, len(is_flipped)):
+            if not is_flipped[y]:
+                if y == 0:
+                    non_hidden_1 = Card_game_classes.Card(self.board.row_1_middle.suit, self.board.row_1_middle.value,
+                                                          True)
+                    total_cards.append(non_hidden_1)
+                elif y == 1:
+                    non_hidden_2 = Card_game_classes.Card(self.board.row2middle.suit, self.board.row2middle.value, True)
+                    total_cards.append(non_hidden_2)
+                elif y == 2:
+                    non_hidden_3 = Card_game_classes.Card(self.board.row3middle.suit, self.board.row3middle.value, True)
+                    total_cards.append(non_hidden_3)
+
         in_chance = []
         out_chance = []
         in_out_on_chance = []
@@ -579,27 +594,27 @@ class DrinkingGame(object):
 
                 counter = 0
                 for k in range(i + 1, j):
-                    for m in range(0, len(self.board.deck.cards)):
-                        if k == self.board.deck.cards[m].value:
+                    for m in range(0, len(total_cards)):
+                        if k == total_cards[m].value:
                             counter += 1
-                in_chance.append(counter / len(self.board.deck.cards))
+                in_chance.append(counter / len(total_cards))
 
                 counter = 0
                 for k in range(i - 1, 0, -1):
-                    for m in range(0, len(self.board.deck.cards)):
-                        if k == self.board.deck.cards[m].value:
+                    for m in range(0, len(total_cards)):
+                        if k == total_cards[m].value:
                             counter += 1
                 for k in range(j + 1, 14):
-                    for m in range(0, len(self.board.deck.cards)):
-                        if k == self.board.deck.cards[m].value:
+                    for m in range(0, len(total_cards)):
+                        if k == total_cards[m].value:
                             counter += 1
-                out_chance.append(counter / len(self.board.deck.cards))
+                out_chance.append(counter / len(total_cards))
 
                 counter = 0
-                for m in range(0, len(self.board.deck.cards)):
-                    if i == self.board.deck.cards[m].value:
+                for m in range(0, len(total_cards)):
+                    if i == total_cards[m].value:
                         counter += 1
-                in_out_on_chance.append(counter / len(self.board.deck.cards))
+                in_out_on_chance.append(counter / len(total_cards))
             else:
                 in_chance.append(0)
                 out_chance.append(0)
